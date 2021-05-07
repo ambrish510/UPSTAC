@@ -23,34 +23,24 @@ public class TestRequestQueryService {
     @Autowired
     private TestRequestRepository testRequestRepository;
 
-
     @Autowired
     private LabResultRepository labResultRepository;
-
 
     @Autowired
     private ConsultationRepository consultationRepository;
 
     private static Logger logger = LoggerFactory.getLogger(TestRequestQueryService.class);
 
-
     public List<TestRequest> findAll() {
-
         return testRequestRepository.findAll();
     }
 
-
     public Optional<TestRequest> getTestRequestById(Long id) {
-
         return testRequestRepository.findById(id);
     }
 
-
-
-
     public List<TestRequest> findBy(RequestStatus requestStatus) {
         return testRequestRepository.findByStatus(requestStatus);
-
     }
 
 

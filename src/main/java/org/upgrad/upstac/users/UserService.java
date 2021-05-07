@@ -136,17 +136,12 @@ public class UserService {
         newUser.setDateOfBirth(getDateFromString(registerRequest.getDateOfBirth()));
         newUser.setStatus(status);
         User updatedUser = saveInDatabase(newUser);
-
-
         return updatedUser;
-
-
     }
 
     @CachePut(value = "user")
     public User updateApprovalStatus(Long userId,AccountStatus status) {
         User user = userRepository.findById(userId).orElseThrow(() -> new AppException("Invalid User ID"));
-
         return updateStatusAndSave(user, status);
 
     }
@@ -165,15 +160,10 @@ public class UserService {
 
             e.printStackTrace();
             throw new AppException("User with same data Already exists, Email/Phone should be unique");
-
         }
-
     }
 
     public User updateUserDetails(User user, UpdateUserDetailRequest updateUserDetailRequest) {
-
-
-
         if(isNotEmptyOrNull(updateUserDetailRequest.getFirstName()))
             user.setFirstName(updateUserDetailRequest.getFirstName());
 
@@ -186,19 +176,14 @@ public class UserService {
         if(isNotEmptyOrNull(updateUserDetailRequest.getPhoneNumber()))
             user.setPhoneNumber(updateUserDetailRequest.getPhoneNumber());
 
-
         User savedUser = saveInDatabase(user);
         log.info("updateUserDetails" + savedUser.toString());
         return savedUser;
-
-
     }
-
 
     public Set<Role> getRoleFor(UserRole userRole) {
         return getRolesForUser(roleService.findByRole(userRole));
     }
-
 
     private Set<Role> getRolesForUser(Role role) {
         Set<Role> roles = new HashSet<>();
@@ -206,9 +191,7 @@ public class UserService {
         return roles;
     }
 
-
     public String toEncrypted(String password) {
-
         return bCryptPasswordEncoder.encode(password);
     }
 
@@ -219,6 +202,4 @@ public class UserService {
     public User findByPhoneNumber(String email) {
         return userRepository.findByPhoneNumber(email).orElse(null);
     }
-
-
 }

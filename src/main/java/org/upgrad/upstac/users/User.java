@@ -54,12 +54,8 @@ public class User {
     @ManyToMany(fetch = FetchType.EAGER)
     private Set<Role> roles;
 
-
     public boolean doesRoleIsDoctor() {
-
         return doesUserHasRole("DOCTOR");
-
-
     }
 
     public boolean doesUserHasRole(String s) {
@@ -84,11 +80,9 @@ public class User {
     }
 
     public Integer getAge(){
-
         if(null != dateOfBirth)
             return LocalDate.now().getYear() - dateOfBirth.getYear();
         else
             return 0;
     }
-
 }

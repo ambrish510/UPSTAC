@@ -22,7 +22,6 @@ import org.springframework.security.web.firewall.StrictHttpFirewall;
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
-
     @Autowired
     @Qualifier("UpgradUserDetailsService")
     private UserDetailsService UpgradUserDetailsService;
@@ -61,7 +60,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         return firewall;
     }
 
-
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 
@@ -86,13 +84,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         http.addFilterBefore(authenticationTokenFilterBean(), UsernamePasswordAuthenticationFilter.class);
-
-
     }
 
     @Bean
     public BCryptPasswordEncoder encoder(){
         return new BCryptPasswordEncoder();
     }
-
 }

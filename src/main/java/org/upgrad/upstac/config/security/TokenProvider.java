@@ -22,12 +22,10 @@ import java.util.stream.Collectors;
 @Component
 public class TokenProvider implements Serializable {
 
-
     public static final  long JWT_TOKEN_VALIDITY = 12 * 60 * 60;
 
     @Value("${token.secret}" )
     private String secretKey;
-
 
     static final String AUTHORITIES_KEY = "scopes";
 
@@ -88,18 +86,12 @@ public class TokenProvider implements Serializable {
         final Jws<Claims> claimsJws = jwtParser.parseClaimsJws(token);
 
         final Claims claims = claimsJws.getBody();
-
-
-
         log.info("claims" + claims.get(AUTHORITIES_KEY).toString());
         final Collection<? extends GrantedAuthority> authorities =
                 Arrays.stream(claims.get(AUTHORITIES_KEY).toString().split(","))
                         .map(SimpleGrantedAuthority::new)
                         .collect(Collectors.toList());
-
         return new UsernamePasswordAuthenticationToken(userDetails, "", authorities);
     }
-
     private static final Logger log = LoggerFactory.getLogger(TokenProvider.class);
-
 }

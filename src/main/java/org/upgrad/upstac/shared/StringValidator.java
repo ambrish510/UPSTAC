@@ -18,7 +18,4 @@ public class StringValidator {
             return true;
         return false;
     }
-
-
-
 }

@@ -13,7 +13,6 @@ import java.time.LocalDate;
 @Entity
 public class TestRequest {
 
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long requestId;
@@ -24,8 +23,6 @@ public class TestRequest {
     private LocalDate created=LocalDate.now();
 
     private RequestStatus status = RequestStatus.INITIATED;
-
-
     private String name;
     private Gender gender;
     private String address;
@@ -39,5 +36,4 @@ public class TestRequest {
 
     @OneToOne(mappedBy="request")
     LabResult labResult;
-
 }

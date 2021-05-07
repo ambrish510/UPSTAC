@@ -20,12 +20,8 @@ public class UserLoggedInService {
         this.userService = userService;
     }
 
-
     public User getLoggedInUser() {
             UserDetails principal = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
             return userService.findByUserName(principal.getUsername());
-
     }
-
-
 }

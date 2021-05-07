@@ -35,7 +35,6 @@ public class SwaggerConfig {
                 .securityContexts(getSecurityContexts());
     }
 
-
     private List<SecurityScheme> getSecuritySchemes() {
         return Collections.singletonList(new ApiKey("Authorization", "Authorization", "header"));
     }
@@ -45,7 +44,6 @@ public class SwaggerConfig {
                 .securityReferences(getSecurityReferences())
                 .forPaths(pathsToBeSecured())
                 .build();
-
         return Collections.singletonList(context);
     }
 
@@ -56,14 +54,12 @@ public class SwaggerConfig {
                 new AuthorizationScope(getScopeFor(UserRole.GOVERNMENT_AUTHORITY), "Government Authority"),
                 new AuthorizationScope(getScopeFor(UserRole.USER), "Registered users")
         };
-
         return Collections.singletonList(new SecurityReference("Authorization", authorizationScopes));
     }
 
      String getScopeFor(UserRole role) {
         return role.name();
     }
-
 
     private Predicate<String> pathsToBeDocumented() {
         return or(

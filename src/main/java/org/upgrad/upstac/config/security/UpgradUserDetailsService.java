@@ -17,12 +17,7 @@ import java.util.stream.Collectors;
 
 @Service(value = "UpgradUserDetailsService")
 public class UpgradUserDetailsService implements UserDetailsService {
-
-
 	private UserService userService;
-
-
-
 	private static final Logger log = LoggerFactory.getLogger(UpgradUserDetailsService.class);
 
 	@Autowired
@@ -46,7 +41,5 @@ public class UpgradUserDetailsService implements UserDetailsService {
 				.stream()
 				.map(role -> new SimpleGrantedAuthority("ROLE_" + role.getName()))
 				.collect(Collectors.toSet());
-
 	}
-
 }

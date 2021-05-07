@@ -19,10 +19,8 @@ import java.io.IOException;
 @Slf4j
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
-
     static final String TOKEN_PREFIX = "Bearer ";
     static final String HEADER_STRING = "Authorization";
-
 
     @Autowired
     @Qualifier("UpgradUserDetailsService")
@@ -34,7 +32,6 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
     @Override
     protected void doFilterInternal(HttpServletRequest req, HttpServletResponse res, FilterChain chain) throws IOException, ServletException {
         String header = req.getHeader(HEADER_STRING);
-
         String username = null;
         String authToken = null;
 
@@ -48,7 +45,6 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             setSecurityContextAuthenticationIn(req, username, authToken);
         }
 
-
         chain.doFilter(req, res);
     }
 
@@ -57,9 +53,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
     }
 
     String getUserNameFromToken(String authToken) throws ServletException {
-
         return tokenProvider.getUsernameFromToken(authToken);
-
     }
 
     private boolean isTokenAttributeSetIn(String header) {
@@ -68,7 +62,6 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
     void setSecurityContextAuthenticationIn(HttpServletRequest req, String username, String authToken) throws ServletException {
         UserDetails userDetails = userDetailsService.loadUserByUsername(username);
-
         tokenProvider.validateToken(authToken, userDetails);
         UsernamePasswordAuthenticationToken authentication = tokenProvider.getAuthentication(authToken, SecurityContextHolder.getContext().getAuthentication(), userDetails);
         authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(req));

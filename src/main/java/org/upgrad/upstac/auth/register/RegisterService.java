@@ -26,8 +26,6 @@ public class RegisterService {
 
 
     public User addUser(RegisterRequest user) {
-
-
         if((null != userService.findByUserName(user.getUserName())))
             throw new AppException("Username already exists " + user.getUserName());
 

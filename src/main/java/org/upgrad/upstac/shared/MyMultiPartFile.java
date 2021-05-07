@@ -17,8 +17,6 @@ public class MyMultiPartFile implements MultipartFile {
     private String contentType;
     private final byte[] content;
 
-
-
     public MyMultiPartFile(String name, InputStream contentStream) throws IOException {
         this(name, name, "image/png", (byte[]) FileCopyUtils.copyToByteArray(contentStream));
     }
@@ -29,7 +27,6 @@ public class MyMultiPartFile implements MultipartFile {
         this.contentType = contentType;
         this.content = content != null ? content : new byte[0];
     }
-
 
     public String getName() {
         return this.name;

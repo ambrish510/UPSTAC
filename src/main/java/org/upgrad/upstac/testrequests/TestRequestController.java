@@ -23,7 +23,6 @@ public class TestRequestController {
 
     Logger log = LoggerFactory.getLogger(TestRequestController.class);
 
-
     @Autowired
     private TestRequestService testRequestService;
 
@@ -32,7 +31,6 @@ public class TestRequestController {
 
     @Autowired
     private TestRequestQueryService testRequestQueryService;
-
 
     @PostMapping("/api/testrequests")
     public TestRequest createRequest(@RequestBody CreateTestRequest testRequest) {
@@ -43,27 +41,16 @@ public class TestRequestController {
         }  catch (AppException e) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getMessage());
         }
-
     }
 
     @GetMapping("/api/testrequests")
     public List<TestRequest> requestHistory() {
-
         User user = userLoggedInService.getLoggedInUser();
         return testRequestService.getHistoryFor(user);
-
-
     }
 
     @GetMapping("/api/testrequests/{id}")
     public Optional<TestRequest> getById(@PathVariable Long id) {
-
-
         return testRequestQueryService.getTestRequestById(id);
-
-
     }
-
-
-
 }
