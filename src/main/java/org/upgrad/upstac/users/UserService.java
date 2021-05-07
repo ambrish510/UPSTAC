@@ -16,16 +16,12 @@ import org.upgrad.upstac.users.models.UpdateUserDetailRequest;
 import org.upgrad.upstac.users.roles.Role;
 import org.upgrad.upstac.users.roles.RoleService;
 import org.upgrad.upstac.users.roles.UserRole;
-
-
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 import java.util.*;
-
 import static org.upgrad.upstac.shared.DateParser.getDateFromString;
 import static org.upgrad.upstac.shared.StringValidator.isNotEmptyOrNull;
-
 
 @Service
 @Validated
@@ -42,25 +38,17 @@ public class UserService {
 
     private static final Logger log = LoggerFactory.getLogger(UserService.class);
 
-
-
     @Cacheable("user")
     public User findByUserName(String userName) {
-
         return userRepository.findByUserName(userName);
-
     }
 
     public List<User> findPendingApprovals() {
-
         return userRepository.findByStatus(AccountStatus.INITIATED);
-
     }
 
     public boolean isApprovedUser(String userName) {
-
         return userRepository.findByUserName(userName).getStatus() == AccountStatus.APPROVED;
-
     }
 
     public void validateUserWithSameDataExists(RegisterRequest user) {
@@ -74,9 +62,7 @@ public class UserService {
         userRepository.findByPhoneNumber(user.getPhoneNumber()).ifPresent(user1 ->  {
             throw new AppException("User with Same Phone number already exists " + user.getPhoneNumber());
         });
-
     }
-
 
     public List<User> findAll() {
         List<User> list = new ArrayList<>();
@@ -84,41 +70,27 @@ public class UserService {
         return list;
     }
 
-
-
-
-
     public Optional<User> findById(Long id) {
         return userRepository.findById(id);
     }
 
-
     public User addUser(RegisterRequest user) {
-
-
         return addUserWithRole(user, roleService.getForUser(), AccountStatus.APPROVED);
     }
 
     public User addDoctor(RegisterRequest user) {
-
         return addUserWithRole(user, roleService.getForDoctor(), AccountStatus.INITIATED);
     }
     public User addGovernmentAuthority(RegisterRequest user) {
-
         return addUserWithRole(user, roleService.getForGovernmentAuthority(), AccountStatus.APPROVED);
     }
 
     public User addTester(RegisterRequest user) {
-
         return addUserWithRole(user, roleService.getForTester(), AccountStatus.INITIATED);
     }
 
-
     public User addUserWithRole(@Valid RegisterRequest registerRequest, Role role, AccountStatus status) {
-
         validateUserWithSameDataExists(registerRequest);
-
-
         User newUser = new User();
         newUser.setUserName(registerRequest.getUserName());
         newUser.setPassword(toEncrypted(registerRequest.getPassword()));
@@ -143,7 +115,6 @@ public class UserService {
     public User updateApprovalStatus(Long userId,AccountStatus status) {
         User user = userRepository.findById(userId).orElseThrow(() -> new AppException("Invalid User ID"));
         return updateStatusAndSave(user, status);
-
     }
 
     public User updateStatusAndSave(User user, @NotNull AccountStatus status) {
