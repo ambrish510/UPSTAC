@@ -4,7 +4,6 @@ import lombok.Data;
 
 @Data
 public class LoginResponse {
-
     private String userName;
     private String message;
     private String token;
@@ -12,6 +11,7 @@ public class LoginResponse {
     public LoginResponse(){
 
     }
+
     public LoginResponse(String userName, String message, String token) {
         super();
         this.userName = userName;

@@ -15,7 +15,7 @@
 	<name>UpstacApi-Week-3</name>
 	<description>UPSTAC Project</description>
 	<properties>
-		<java.version>8</java.version>
+		<java.version>16</java.version>
 	</properties>
 
 	<dependencies>

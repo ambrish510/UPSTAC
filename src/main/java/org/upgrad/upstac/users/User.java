@@ -25,36 +25,22 @@ public class User {
 
     @Column(unique = true)
     private String userName;
-
     @Column
     @JsonIgnore
     @ToString.Exclude
     private String password;
-
     private LocalDateTime created;
-
     private LocalDate dateOfBirth;
-
-
     private LocalDateTime updated;
-
     private String firstName;
-
     private AccountStatus status;
-
     @Column(unique = true)
     private String email;
-
-
     private String lastName;
-
-
     private Gender gender;
-
     @Column(unique = true)
     private String phoneNumber;
     private String address;
-
     private Integer pinCode;
 
     //CascadeType.PERSIST has issues with many to many which makes us not use CascadeType.ALL
