@@ -59,7 +59,7 @@ public class ConsultationController {
     @PutMapping("/assign/{id}")
     public TestRequest assignForConsultation(@PathVariable Long id) {
         try {
-            User doctor =userLoggedInService.getLoggedInUser();
+            User doctor = userLoggedInService.getLoggedInUser();
             return   testRequestUpdateService.assignForConsultation(id,doctor);
         }catch (AppException e) {
             throw asBadRequest(e.getMessage());
