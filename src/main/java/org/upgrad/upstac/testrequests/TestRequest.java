@@ -5,7 +5,6 @@ import org.upgrad.upstac.testrequests.consultation.Consultation;
 import org.upgrad.upstac.testrequests.lab.LabResult;
 import org.upgrad.upstac.users.User;
 import org.upgrad.upstac.users.models.Gender;
-
 import javax.persistence.*;
 import java.time.LocalDate;
 
@@ -21,7 +20,6 @@ public class TestRequest {
     private User createdBy;
 
     private LocalDate created=LocalDate.now();
-
     private RequestStatus status = RequestStatus.INITIATED;
     private String name;
     private Gender gender;

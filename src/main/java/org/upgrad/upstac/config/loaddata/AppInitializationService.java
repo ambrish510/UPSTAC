@@ -12,12 +12,9 @@ import org.upgrad.upstac.users.UserService;
 import org.upgrad.upstac.users.models.Gender;
 import org.upgrad.upstac.users.roles.RoleService;
 import org.upgrad.upstac.users.roles.UserRole;
-
 import java.time.LocalDate;
 import java.util.*;
-
 import static org.upgrad.upstac.shared.DateParser.getStringFromDate;
-
 
 @Component
 public class AppInitializationService implements ApplicationListener<ApplicationReadyEvent> {
@@ -140,7 +137,6 @@ public class AppInitializationService implements ApplicationListener<Application
             return addresses.get(pinCode);
         else
             return getRandomDoorNumber() + " - " + getRandomStreetName() + ",Goa";
-
     }
     static int getRandomPinCode() {
         List<Integer> integers = Arrays.asList(110001, 560003, 400001, 700004);
@@ -148,7 +144,6 @@ public class AppInitializationService implements ApplicationListener<Application
         return integers.get(rand.nextInt(integers.size()));
 
     }
-
 
     private static String getRandomPhoneNumber() {
         Long start = 9629150000L;

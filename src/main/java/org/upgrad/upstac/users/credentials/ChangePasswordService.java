@@ -19,12 +19,8 @@ import javax.validation.Valid;
 @Service
 @Validated
 public class ChangePasswordService {
-
-
     private AuthenticationManager authenticationManager;
-
     private BCryptPasswordEncoder bCryptPasswordEncoder;
-
 
     @Autowired
     public ChangePasswordService(AuthenticationManager authenticationManager, BCryptPasswordEncoder bCryptPasswordEncoder, UserRepository userRepository) {
@@ -34,13 +30,8 @@ public class ChangePasswordService {
     }
 
     private UserRepository userRepository;
-
-
     private static final Logger log = LoggerFactory.getLogger(ChangePasswordService.class);
-
     public void changePassword(User user, @Valid ChangePasswordRequest changePasswordRequest) {
-
-
         try {
             authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(
@@ -56,7 +47,5 @@ public class ChangePasswordService {
         } catch (Exception e) {
             throw new ForbiddenException(e.getMessage());
         }
-
     }
-
 }

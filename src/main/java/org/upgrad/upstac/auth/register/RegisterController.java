@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.upgrad.upstac.exception.AppException;
 import org.upgrad.upstac.users.User;
-
 import static org.upgrad.upstac.exception.UpgradResponseStatusException.asBadRequest;
 
 @RestController

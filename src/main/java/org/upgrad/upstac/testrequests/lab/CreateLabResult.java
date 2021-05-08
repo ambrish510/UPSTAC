@@ -1,7 +1,6 @@
 package org.upgrad.upstac.testrequests.lab;
 
 import lombok.Data;
-
 import javax.validation.constraints.NotNull;
 
 @Data

@@ -13,7 +13,6 @@ import org.upgrad.upstac.testrequests.lab.LabResult;
 import org.upgrad.upstac.testrequests.lab.LabResultService;
 import org.upgrad.upstac.testrequests.lab.CreateLabResult;
 import org.upgrad.upstac.users.User;
-
 import javax.transaction.Transactional;
 import javax.validation.Valid;
 

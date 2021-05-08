@@ -36,7 +36,6 @@ public class DateParser {
         return Optional.ofNullable(input)
                 .map(date -> Instant.ofEpochMilli(date.getTime()).atZone(ZoneId.systemDefault()).toLocalDate())
                 .orElseThrow(() -> new AppException("Invalid Input"));
-
     }
 
     public static Date asDate(LocalDate input) {

@@ -1,6 +1,5 @@
 package org.upgrad.upstac.users;
 
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,13 +12,10 @@ import org.upgrad.upstac.users.credentials.ChangePasswordRequest;
 import org.upgrad.upstac.users.credentials.ChangePasswordService;
 import org.upgrad.upstac.users.models.AccountStatus;
 import org.upgrad.upstac.users.models.UpdateUserDetailRequest;
-
 import javax.validation.ConstraintViolationException;
 import java.util.List;
-
 import static org.upgrad.upstac.exception.UpgradResponseStatusException.asConstraintViolation;
 import static org.upgrad.upstac.exception.UpgradResponseStatusException.asForbidden;
-
 
 @RestController
 @RequestMapping("/users")
@@ -28,10 +24,8 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-
     @Autowired
     UserLoggedInService userLoggedInService;
-
 
     @Autowired
     ChangePasswordService changePasswordService;
@@ -48,7 +42,6 @@ public class UserController {
     @PreAuthorize("hasAnyRole('USER','GOVERNMENT_AUTHORITY','TESTER','DOCTOR')")
     @GetMapping(value = "/details")
     public User getMyDetails() {
-
         return userLoggedInService.getLoggedInUser();
     }
 

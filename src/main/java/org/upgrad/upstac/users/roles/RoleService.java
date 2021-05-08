@@ -5,15 +5,11 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-
 @Service
 public class RoleService {
 
-
     @Autowired
 	private RoleRepository roleRepository;
-
-
 
     public void saveRoleFor(UserRole userRole) {
         Role role = new Role();
@@ -21,13 +17,11 @@ public class RoleService {
         roleRepository.save(role);
     }
 
-
     public List<Role> findAll() {
         return roleRepository.findAll();
     }
 
     public Role findByRole(UserRole userRole) {
-
        return roleRepository.findByName(userRole.name());
     }
 
@@ -41,15 +35,12 @@ public class RoleService {
     public Role getForDoctor() {
          return findByRole(UserRole.DOCTOR);
 	}
-    public Role getForTester()
-    {
+
+    public Role getForTester() {
         return findByRole(UserRole.TESTER);
-
 	}
-	public Role getForGovernmentAuthority()
-    {
+
+	public Role getForGovernmentAuthority(){
         return findByRole(UserRole.GOVERNMENT_AUTHORITY);
-
 	}
-
 }

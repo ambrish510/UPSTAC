@@ -3,10 +3,10 @@ package org.upgrad.upstac.auth.models;
 import io.swagger.annotations.ApiModelProperty;
 
 public class LoginRequest {
-
     @ApiModelProperty(example = "user")
     private String userName;
 	private String password;
+
 	public LoginRequest() {
 
 	}

@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.upgrad.upstac.exception.AppException;
 import org.upgrad.upstac.users.User;
-
 import java.time.LocalDate;
 import java.util.List;
 

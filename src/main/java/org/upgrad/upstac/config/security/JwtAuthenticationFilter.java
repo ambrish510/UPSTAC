@@ -9,7 +9,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.web.filter.OncePerRequestFilter;
-
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -44,7 +43,6 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             log.info("security context se");
             setSecurityContextAuthenticationIn(req, username, authToken);
         }
-
         chain.doFilter(req, res);
     }
 
@@ -67,7 +65,6 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(req));
         logger.info("authenticated user " + username + ", setting security context");
         SecurityContextHolder.getContext().setAuthentication(authentication);
-
     }
 
     boolean isSecurityContextAuthenticationNotPresent(String username) {

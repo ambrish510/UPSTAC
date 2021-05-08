@@ -5,7 +5,6 @@ import javax.validation.constraints.Size;
 
 public class ChangePasswordRequest {
 
-
     @NotNull
     @Size(min = 8,max = 255)
     String password;
@@ -29,6 +28,4 @@ public class ChangePasswordRequest {
     public void setOldPassword(String oldPassword) {
         this.oldPassword = oldPassword;
     }
-
-
 }

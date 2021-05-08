@@ -10,13 +10,12 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.upgrad.upstac.users.User;
 import org.upgrad.upstac.users.UserService;
-
 import java.util.Set;
 import java.util.stream.Collectors;
 
-
 @Service(value = "UpgradUserDetailsService")
 public class UpgradUserDetailsService implements UserDetailsService {
+
 	private UserService userService;
 	private static final Logger log = LoggerFactory.getLogger(UpgradUserDetailsService.class);
 
@@ -36,7 +35,6 @@ public class UpgradUserDetailsService implements UserDetailsService {
 	}
 
 	private Set<SimpleGrantedAuthority> getAuthority(User user) {
-
 		return user.getRoles()
 				.stream()
 				.map(role -> new SimpleGrantedAuthority("ROLE_" + role.getName()))

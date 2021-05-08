@@ -43,15 +43,12 @@ public class TestRequestQueryService {
         return testRequestRepository.findByStatus(requestStatus);
     }
 
-
-
     public List<TestRequest> findByTester(User user) {
 
         return  labResultRepository.findByTester(user)
                 .stream()
                 .map(LabResult::getRequest)
                 .collect(Collectors.toList());
-
     }
 
     public List<TestRequest> findByDoctor(User user) {
@@ -63,7 +60,6 @@ public class TestRequestQueryService {
 
 
     public Optional<TestRequest> findTestRequestForUserByID(User user,Long id) {
-
 
         logger.info("findTestRequestForUserByID" + user.getRoles().toString());
 
@@ -77,44 +73,24 @@ public class TestRequestQueryService {
             return testRequestRepository.findByRequestId(id);
         else
             throw new AppException("Invalid Role");
-
     }
 
-
-
     public Optional<TestRequest> findByDoctorAndID(User doctor,Long id) {
-
-
         return  testRequestRepository.findByRequestId(id)
                 .filter(testRequest -> consultationRepository.findByDoctorAndRequest(doctor,testRequest).isPresent());
 
     }
+
     public Optional<TestRequest> findByTesterAndID(User tester,Long id) {
-
-
-
-
         return  testRequestRepository.findByRequestId(id)
                 .filter(testRequest -> labResultRepository.findByTesterAndRequest(tester,testRequest).isPresent());
-
-
-
-
-
-
-
     }
 
     public Optional<TestRequest> findByUserAndID(User user,Long id) {
-
         return  testRequestRepository.findByCreatedByAndRequestId(user,id);
-
     }
 
     public List<TestRequest> findByUser(User user) {
         return  testRequestRepository.findByCreatedBy(user);
-
-
     }
-
 }

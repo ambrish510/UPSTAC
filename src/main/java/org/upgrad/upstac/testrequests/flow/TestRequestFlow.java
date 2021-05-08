@@ -5,7 +5,6 @@ import lombok.Data;
 import org.upgrad.upstac.testrequests.RequestStatus;
 import org.upgrad.upstac.testrequests.TestRequest;
 import org.upgrad.upstac.users.User;
-
 import javax.persistence.*;
 import java.time.LocalDate;
 
@@ -13,12 +12,9 @@ import java.time.LocalDate;
 @Entity
 public class TestRequestFlow {
 
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
-
-
 
     @ManyToOne
     @JsonIgnore

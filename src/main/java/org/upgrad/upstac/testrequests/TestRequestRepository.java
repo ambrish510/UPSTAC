@@ -2,10 +2,8 @@ package org.upgrad.upstac.testrequests;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.upgrad.upstac.users.User;
-
 import java.util.List;
 import java.util.Optional;
-
 
 public interface TestRequestRepository extends JpaRepository<TestRequest,Long> {
 

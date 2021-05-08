@@ -2,7 +2,6 @@ package org.upgrad.upstac.shared;
 
 import org.springframework.web.multipart.MultipartFile;
 import org.upgrad.upstac.exception.AppException;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;

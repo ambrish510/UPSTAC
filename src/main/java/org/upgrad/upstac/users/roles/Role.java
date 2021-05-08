@@ -1,7 +1,6 @@
 package org.upgrad.upstac.users.roles;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import javax.persistence.*;
 
 @Entity
@@ -18,8 +17,6 @@ public class Role {
     @Column
     @JsonIgnore
     private String description;
-
-
 
     public  Long getId() {
         return id;

@@ -13,7 +13,6 @@ public class UpdateUserDetailRequest {
     @ApiModelProperty(example = "MK")
     private String firstName;
 
-
     @ApiModelProperty(example = "Gandhi")
     private String lastName;
 
@@ -22,5 +21,4 @@ public class UpdateUserDetailRequest {
 
     @ApiModelProperty(example = "+91956567687")
     private String phoneNumber="";
-
 }

@@ -1,10 +1,8 @@
 package org.upgrad.upstac.shared;
 
 import org.springframework.lang.Nullable;
-import org.springframework.util.Assert;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.multipart.MultipartFile;
-
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;

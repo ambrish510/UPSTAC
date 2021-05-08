@@ -81,6 +81,7 @@ public class RegisterService {
         User updatedUser = userService.saveInDatabase(newUser);
         return updatedUser;
     }
+
     public User addGovernmentAuthority(RegisterRequest user) {
 
         if((null != userService.findByUserName(user.getUserName())))

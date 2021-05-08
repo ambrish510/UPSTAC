@@ -10,7 +10,6 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
-
 import javax.servlet.ServletException;
 import java.io.Serializable;
 import java.util.Arrays;
@@ -82,9 +81,7 @@ public class TokenProvider implements Serializable {
     UsernamePasswordAuthenticationToken getAuthentication(final String token, final Authentication existingAuth, final UserDetails userDetails) {
 
         final JwtParser jwtParser = Jwts.parser().setSigningKey(secretKey);
-
         final Jws<Claims> claimsJws = jwtParser.parseClaimsJws(token);
-
         final Claims claims = claimsJws.getBody();
         log.info("claims" + claims.get(AUTHORITIES_KEY).toString());
         final Collection<? extends GrantedAuthority> authorities =
